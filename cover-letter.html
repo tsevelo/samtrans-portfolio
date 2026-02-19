@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cover Letter — Tai Sevelo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Screen preview ─────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', Georgia, serif;
+      background: #e8edf2;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      padding: 40px 20px;
+      color: #1a2638;
+    }
+
+    .page {
+      background: #ffffff;
+      width: 680px;
+      padding: 56px 60px;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.14);
+      border-radius: 4px;
+      position: relative;
+    }
+
+    /* ── Letterhead ─────────────────────────────────── */
+    .letterhead {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding-bottom: 20px;
+      border-bottom: 3px solid #005B9A;
+      margin-bottom: 28px;
+    }
+    .lh-name {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: #003F6E;
+      letter-spacing: -0.3px;
+      margin-bottom: 3px;
+    }
+    .lh-title {
+      font-size: 11.5px;
+      font-weight: 600;
+      color: #00A499;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .lh-contact {
+      text-align: right;
+      font-size: 11px;
+      color: #4a5568;
+      line-height: 1.7;
+    }
+    .lh-contact a { color: #005B9A; text-decoration: none; }
+
+    /* ── Accent stripe ──────────────────────────────── */
+    .accent-stripe {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 24px;
+    }
+    .stripe { height: 3px; border-radius: 2px; }
+    .s-blue   { background: #005B9A; width: 32px; }
+    .s-teal   { background: #00A499; width: 20px; }
+    .s-orange { background: #F7941D; width: 12px; }
+
+    /* ── Date & addressee ───────────────────────────── */
+    .date {
+      font-size: 12px;
+      color: #718096;
+      margin-bottom: 18px;
+    }
+    .addressee {
+      font-size: 12.5px;
+      line-height: 1.6;
+      color: #1a2638;
+      margin-bottom: 22px;
+    }
+    .addressee strong { font-weight: 600; }
+
+    /* ── Subject line ───────────────────────────────── */
+    .subject {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      color: #1a2638;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #EDF2F7;
+    }
+    .subject span { color: #005B9A; }
+
+    /* ── Body ───────────────────────────────────────── */
+    .body p {
+      font-size: 12.5px;
+      line-height: 1.78;
+      color: #2d3748;
+      margin-bottom: 13px;
+    }
+    .body p:last-child { margin-bottom: 0; }
+    .body strong { color: #1a2638; font-weight: 600; }
+    .body a { color: #005B9A; text-decoration: none; font-weight: 500; }
+
+    /* ── Sidebar stat bar ───────────────────────────── */
+    .stat-bar {
+      display: flex;
+      gap: 0;
+      background: #F5F7FA;
+      border: 1px solid #EDF2F7;
+      border-radius: 6px;
+      overflow: hidden;
+      margin: 16px 0;
+    }
+    .stat-item {
+      flex: 1;
+      text-align: center;
+      padding: 10px 8px;
+      border-right: 1px solid #EDF2F7;
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-num {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: 3px;
+    }
+    .stat-label { font-size: 9px; color: #718096; text-transform: uppercase; letter-spacing: 0.06em; line-height: 1.2; }
+    .sn-blue   { color: #005B9A; }
+    .sn-teal   { color: #00A499; }
+    .sn-orange { color: #F7941D; }
+
+    /* ── Closing ────────────────────────────────────── */
+    .closing {
+      margin-top: 20px;
+      font-size: 12.5px;
+      line-height: 1.78;
+      color: #2d3748;
+    }
+    .signature {
+      margin-top: 28px;
+    }
+    .sig-regards { font-size: 12px; color: #718096; margin-bottom: 32px; }
+    .sig-name {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: #003F6E;
+      margin-bottom: 2px;
+    }
+    .sig-title { font-size: 11px; color: #00A499; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; }
+
+    /* ── Footer rule ────────────────────────────────── */
+    .footer-rule {
+      margin-top: 28px;
+      padding-top: 12px;
+      border-top: 1px solid #EDF2F7;
+      font-size: 10px;
+      color: #A0AEC0;
+      text-align: center;
+    }
+    .footer-rule a { color: #00A499; text-decoration: none; }
+
+    /* ── Print styles ───────────────────────────────── */
+    @media print {
+      @page {
+        size: letter;
+        margin: 0;
+      }
+      body {
+        background: white;
+        padding: 0;
+        display: block;
+      }
+      .page {
+        width: 100%;
+        padding: 48px 56px;
+        box-shadow: none;
+        border-radius: 0;
+        /* Scale everything slightly to guarantee one page */
+        font-size: 97%;
+      }
+      .body p { font-size: 12px; line-height: 1.72; margin-bottom: 11px; }
+      .addressee { font-size: 11.5px; }
+      a { color: #005B9A !important; }
+      .footer-rule { display: none; }
+
+      /* Prevent orphaned lines */
+      p { orphans: 3; widows: 3; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- LETTERHEAD -->
+  <div class="letterhead">
+    <div>
+      <div class="lh-name">Tai Sevelo</div>
+      <div class="lh-title">Integrated Marketing Program Manager</div>
+    </div>
+    <div class="lh-contact">
+      tai.sevelo@gmail.com<br>
+      (650) 430-0782<br>
+      Foster City, CA<br>
+      <a href="https://linkedin.com/in/taisevelo">linkedin.com/in/taisevelo</a>
+    </div>
+  </div>
+
+  <div class="accent-stripe">
+    <div class="stripe s-blue"></div>
+    <div class="stripe s-teal"></div>
+    <div class="stripe s-orange"></div>
+  </div>
+
+  <!-- DATE & ADDRESSEE -->
+  <div class="date">February 19, 2026</div>
+
+  <div class="addressee">
+    <strong>Hiring Manager</strong><br>
+    Marketing &amp; Communications Department<br>
+    San Mateo County Transit District (SamTrans)<br>
+    1250 San Carlos Avenue, San Carlos, CA 94070
+  </div>
+
+  <!-- SUBJECT -->
+  <div class="subject">Re: <span>Integrated Marketing Program Manager</span></div>
+
+  <!-- BODY -->
+  <div class="body">
+
+    <p>This morning, I drove Route 281 through Foster City — the same county, the same communities, the same riders I have been serving since joining SamTrans as a Bus Operator in 2024. Tonight, I am writing to apply for the role that would let me serve them differently: as the person who tells their story, grows their ranks, and builds the marketing infrastructure that connects more San Mateo County residents to the system my family has believed in for over three decades.</p>
+
+    <div class="stat-bar">
+      <div class="stat-item">
+        <div class="stat-num sn-orange">1,500+</div>
+        <div class="stat-label">SamTrans Revenue Service Hours</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num sn-blue">98%</div>
+        <div class="stat-label">On-Time Performance</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num sn-blue">$6M</div>
+        <div class="stat-label">Google Campaign<br>Budgets Managed</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num sn-teal">76</div>
+        <div class="stat-label">Languages Coordinated</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num sn-orange">30</div>
+        <div class="stat-label">Years — My Father's<br>SamTrans Legacy</div>
+      </div>
+    </div>
+
+    <p>Before I became an operator, I spent <strong>eleven years in integrated marketing at Google</strong> — managing Nest and Google Assistant campaigns with budgets up to $6M, coordinating programs across 76 languages, leading Google I/O product launches, and achieving 30% efficiency gains and 20% cost savings through process redesign. I know how to run a creative agency, build a measurement framework, manage a media plan, and keep a complex, multi-stakeholder campaign on track. I have done it at some of the most demanding and visible programs in consumer technology.</p>
+
+    <p>What I bring that no outside candidate can is <strong>ground truth</strong>. I understand the operational constraints that marketing plans must respect. I know which service reliability issues erode rider trust before any campaign can build it back. I have had thousands of micro-conversations with riders — commuters, students, essential workers, seniors — that no focus group can replicate. When I build a campaign, it will be built on what SamTrans actually delivers, not on an aspirational version of it. That credibility is the foundation of marketing that earns lasting trust.</p>
+
+    <p>To demonstrate what integrated marketing leadership at SamTrans could look like, I built a five-page interactive portfolio — including a strategic analysis of the 50th anniversary campaign and a full integrated campaign proposal titled <em>"50 Years Strong, 50 Years Forward"</em> — available at: <strong><a href="https://tsevelo.github.io/samtrans-portfolio">tsevelo.github.io/samtrans-portfolio</a></strong></p>
+
+    <p>My father served as a SamTrans Maintenance Supervisor for <strong>30 years</strong>. He kept these buses running before I ever drove one. This application is not a career pivot — it is a homecoming. I want to bring everything I have built at Google back to the agency and the community that shaped me, and use it to help carry SamTrans forward for the next 50 years.</p>
+
+    <p>I would be honored to discuss this role at your convenience. Thank you for your time and consideration.</p>
+
+  </div>
+
+  <!-- SIGNATURE -->
+  <div class="signature">
+    <div class="sig-regards">With respect and enthusiasm,</div>
+    <div class="sig-name">Tai Sevelo</div>
+    <div class="sig-title">Current SamTrans Bus Operator &nbsp;·&nbsp; Former Google Marketing Program Manager</div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer-rule">
+    Portfolio: <a href="https://tsevelo.github.io/samtrans-portfolio">tsevelo.github.io/samtrans-portfolio</a>
+    &nbsp;&nbsp;·&nbsp;&nbsp; tai.sevelo@gmail.com &nbsp;&nbsp;·&nbsp;&nbsp; (650) 430-0782
+  </div>
+
+</div>
+</body>
+</html>
