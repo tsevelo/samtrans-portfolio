@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PM Approach — SamTrans Portfolio</title>
+  <meta name="description" content="The behind-the-scenes program management approach for running integrated marketing campaigns at SamTrans." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* Raci table */
+    .raci-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+    .raci-table th { background: var(--dark); color: white; padding: 10px 14px; text-align: center; }
+    .raci-table th:first-child { text-align: left; }
+    .raci-table td { padding: 10px 14px; border-bottom: 1px solid var(--gray-light); text-align: center; }
+    .raci-table td:first-child { text-align: left; font-weight: 500; color: var(--dark); }
+    .raci-table tr:last-child td { border-bottom: none; }
+    .raci-table tr:nth-child(even) td { background: var(--gray-light); }
+    .raci-r { color: var(--teal-dark); font-weight: 800; font-size: 1rem; }
+    .raci-a { color: var(--orange-dark); font-weight: 800; font-size: 1rem; }
+    .raci-c { color: var(--blue); font-weight: 600; font-size: 0.95rem; }
+    .raci-i { color: var(--gray-mid); font-size: 0.85rem; }
+
+    /* Workflow steps */
+    .workflow-steps { counter-reset: step; }
+    .workflow-step {
+      display: flex; gap: 20px; margin-bottom: 28px; align-items: flex-start;
+    }
+    .step-num {
+      flex-shrink: 0;
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: var(--teal);
+      color: white;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-family: 'Montserrat', sans-serif;
+      font-size: 1.1rem;
+    }
+    .step-body h4 { margin-bottom: 6px; }
+    .step-body p  { font-size: 0.9rem; }
+    .step-tools { margin-top: 8px; display: flex; gap: 6px; flex-wrap: wrap; }
+
+    /* Tool chip */
+    .tool-chip {
+      display: inline-block;
+      background: var(--gray-light);
+      border-radius: 4px;
+      padding: 2px 8px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--gray-dark);
+      font-family: monospace;
+    }
+
+    /* Scenario cards */
+    .scenario {
+      background: white;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--gray-light);
+      padding: 28px;
+      margin-bottom: 20px;
+    }
+    .scenario-header { display: flex; gap: 16px; align-items: flex-start; margin-bottom: 16px; }
+    .scenario-icon { font-size: 1.8rem; flex-shrink: 0; }
+    .scenario-header h3 { margin-bottom: 4px; font-size: 1rem; }
+    .scenario-header p { font-size: 0.85rem; color: var(--gray-mid); }
+    .scenario-response h4 { font-size: 0.85rem; font-weight: 700; color: var(--teal-dark); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 10px; }
+    .scenario-steps { padding: 0; }
+    .scenario-steps li {
+      font-size: 0.875rem; color: var(--gray-dark);
+      padding: 6px 0;
+      border-bottom: 1px solid var(--gray-light);
+      list-style: none;
+      display: flex; gap: 8px;
+    }
+    .scenario-steps li:last-child { border-bottom: none; }
+    .scenario-steps li::before { content: '→'; color: var(--teal); font-weight: 700; flex-shrink: 0; }
+
+    /* Agency management grid */
+    .agency-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
+    .agency-card {
+      padding: 20px;
+      border-radius: var(--radius);
+      border: 1px solid var(--gray-light);
+      background: white;
+    }
+    .agency-type { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray-mid); margin-bottom: 8px; }
+    .agency-card h4 { font-size: 0.95rem; margin-bottom: 8px; }
+    .agency-card p  { font-size: 0.82rem; color: var(--gray-dark); }
+    .agency-practices { margin-top: 12px; font-size: 0.78rem; color: var(--teal-dark); font-weight: 600; border-top: 1px solid var(--gray-light); padding-top: 10px; }
+
+    /* Weekly rhythm table */
+    .rhythm-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+    @media(max-width:640px) { .rhythm-grid { grid-template-columns: 1fr 1fr; } }
+    .rhythm-day { border-radius: var(--radius); padding: 16px; border: 1px solid var(--gray-light); }
+    .rhythm-day-name { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-mid); margin-bottom: 10px; }
+    .rhythm-day ul { padding: 0; }
+    .rhythm-day li { font-size: 0.78rem; color: var(--gray-dark); padding: 3px 0; list-style: none; display: flex; gap: 4px; align-items: flex-start; }
+    .rhythm-day li::before { content: '·'; color: var(--teal); font-weight: 900; flex-shrink: 0; }
+    .rhythm-day.mon { border-top: 3px solid var(--blue); }
+    .rhythm-day.tue { border-top: 3px solid var(--teal); }
+    .rhythm-day.wed { border-top: 3px solid var(--orange); }
+    .rhythm-day.thu { border-top: 3px solid var(--blue); }
+    .rhythm-day.fri { border-top: 3px solid var(--teal); }
+
+    /* Stakeholder map */
+    .stakeholder-map {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 16px;
+    }
+    @media(max-width:640px) { .stakeholder-map { grid-template-columns: 1fr; } }
+    .stakeholder-lane {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--gray-light);
+    }
+    .stakeholder-lane-header {
+      padding: 12px 16px;
+      font-weight: 700;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .lane-exec .stakeholder-lane-header   { background: var(--blue); color: white; }
+    .lane-cross .stakeholder-lane-header  { background: var(--teal); color: white; }
+    .lane-ext .stakeholder-lane-header    { background: var(--orange); color: white; }
+    .stakeholder-lane-body { padding: 16px; background: white; }
+    .stakeholder-item { margin-bottom: 12px; }
+    .stakeholder-item h5 { font-size: 0.85rem; margin-bottom: 3px; }
+    .stakeholder-item p  { font-size: 0.78rem; color: var(--gray-mid); }
+  </style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="container navbar-inner">
+    <a href="index.html" class="navbar-brand">
+      <div class="brand-bar"></div>
+      <div class="brand-text">SamTrans <span>Portfolio</span></div>
+    </a>
+    <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="navbar-nav">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="analysis.html">Campaign Analysis</a></li>
+      <li><a href="campaign.html">My Proposal</a></li>
+      <li><a href="coordination.html">PM Approach</a></li>
+      <li><a href="about.html">About Me</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="container page-hero-content">
+    <div class="page-num-badge">&#9881; Section 03 of 04</div>
+    <span class="section-eyebrow">Program Management</span>
+    <h1>The Coordination Reality</h1>
+    <p>Great campaigns don't just need great ideas — they need rigorous systems. This section covers how I'd manage the agencies, vendors, approvals, timelines, and stakeholders that make integrated marketing actually work.</p>
+  </div>
+</section>
+
+<!-- PHILOSOPHY -->
+<section class="section-sm">
+  <div class="container">
+    <div class="highlight-box teal reveal">
+      <h4>&#128203; My Program Management Philosophy</h4>
+      <p>The PM's job isn't to control everything — it's to make sure everyone else can do their best work. That means: clear briefs so vendors don't guess, clean approval processes so reviews don't stall, and proactive communication so nothing is a surprise. I run campaigns like a conductor, not a gatekeeper.</p>
+    </div>
+  </div>
+</section>
+
+<!-- STAKEHOLDER MAP -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow">Stakeholder Ecosystem</span>
+      <h2>Who I'm Managing, and How</h2>
+      <div class="accent-line"></div>
+      <p>Integrated marketing at a public agency means managing relationships across three concentric circles: executive leadership, cross-functional colleagues, and external partners.</p>
+    </div>
+    <div class="stakeholder-map reveal">
+      <div class="stakeholder-lane lane-exec">
+        <div class="stakeholder-lane-header">&#127968; Executive &amp; Board</div>
+        <div class="stakeholder-lane-body">
+          <div class="stakeholder-item">
+            <h5>CEO / Executive Director</h5>
+            <p>Strategic alignment, major campaign approvals, and board-level narratives. Monthly briefings + on-demand updates for breaking moments.</p>
+          </div>
+          <div class="stakeholder-item">
+            <h5>Chief Marketing / Comms Officer</h5>
+            <p>My direct supervisor. Weekly check-ins, campaign progress, escalations. I keep them never surprised.</p>
+          </div>
+          <div class="stakeholder-item">
+            <h5>Board of Directors</h5>
+            <p>Periodic presentations on campaign strategy and impact. I prepare materials; CMO presents. I'm in the room.</p>
+          </div>
+        </div>
+      </div>
+      <div class="stakeholder-lane lane-cross">
+        <div class="stakeholder-lane-header">&#128101; Internal Departments</div>
+        <div class="stakeholder-lane-body">
+          <div class="stakeholder-item">
+            <h5>Government Affairs</h5>
+            <p>Coordinate on civic partner messaging, legislative calendar, and co-branded city/county activations.</p>
+          </div>
+          <div class="stakeholder-item">
+            <h5>Planning &amp; Operations</h5>
+            <p>Route changes, service updates, fleet news — the marketing content calendar depends on what ops is doing.</p>
+          </div>
+          <div class="stakeholder-item">
+            <h5>IT / Digital Team</h5>
+            <p>App updates, website CMS, data integration for CRM campaigns. Quarterly joint roadmap reviews.</p>
+          </div>
+          <div class="stakeholder-item">
+            <h5>Finance</h5>
+            <p>Budget tracking, PO management, vendor invoice approvals. Monthly budget reconciliation, zero surprises.</p>
+          </div>
+        </div>
+      </div>
+      <div class="stakeholder-lane lane-ext">
+        <div class="stakeholder-lane-header">&#127758; External Partners</div>
+        <div class="stakeholder-lane-body">
+          <div class="stakeholder-item">
+            <h5>Creative Agency</h5>
+            <p>Quarterly creative reviews, monthly production check-ins, weekly deliverable tracking via shared PM tool.</p>
+          </div>
+          <div class="stakeholder-item">
+            <h5>Media Buying Agency</h5>
+            <p>Monthly media performance reviews, campaign flight approvals, real-time optimization check-ins.</p>
+          </div>
+          <div class="stakeholder-item">
+            <h5>PR / Communications Agency</h5>
+            <p>Weekly syncs on media relations, editorial calendar alignment, rapid response coordination.</p>
+          </div>
+          <div class="stakeholder-item">
+            <h5>Community Partners &amp; Employers</h5>
+            <p>Onboarding playbook, co-marketing agreements, quarterly touchpoints, impact reporting.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECT INTAKE & WORKFLOW -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow">How Work Gets Done</span>
+      <h2>Campaign Intake &amp; Production Workflow</h2>
+      <div class="accent-line"></div>
+    </div>
+    <div class="grid-2">
+      <div class="workflow-steps reveal">
+        <div class="workflow-step">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <h4>Strategic Brief</h4>
+            <p>Every project starts with a written brief: objective, audience, key message, channels, timeline, and success metrics. No brief = no kickoff. I write or co-write every brief with the requesting stakeholder.</p>
+            <div class="step-tools">
+              <span class="tool-chip">Brief Template</span>
+              <span class="tool-chip">1-page format</span>
+              <span class="tool-chip">24-hr turnaround SLA</span>
+            </div>
+          </div>
+        </div>
+        <div class="workflow-step">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <h4>Scope &amp; Timeline Lock</h4>
+            <p>Once the brief is approved, I scope the work with agencies and create a production timeline with hard milestones. All deadlines are back-calculated from the live date, not front-loaded from kickoff.</p>
+            <div class="step-tools">
+              <span class="tool-chip">Asana / Monday.com</span>
+              <span class="tool-chip">Gantt view</span>
+              <span class="tool-chip">Buffer days built in</span>
+            </div>
+          </div>
+        </div>
+        <div class="workflow-step">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <h4>Agency Kickoff</h4>
+            <p>Brief walk-through with creative and media teams. Questions answered in the room, not via endless email. I document all decisions and open items before the call ends.</p>
+            <div class="step-tools">
+              <span class="tool-chip">Action item tracker</span>
+              <span class="tool-chip">Shared Slack channel</span>
+            </div>
+          </div>
+        </div>
+        <div class="workflow-step">
+          <div class="step-num">4</div>
+          <div class="step-body">
+            <h4>Review Cycles (Structured)</h4>
+            <p>Maximum two rounds of internal revision before work goes to leadership for approval. I consolidate feedback before returning to agencies — no round-robin conflicting notes. Review windows are scheduled, not open-ended.</p>
+            <div class="step-tools">
+              <span class="tool-chip">Frame.io / Bynder</span>
+              <span class="tool-chip">48-hr review windows</span>
+            </div>
+          </div>
+        </div>
+        <div class="workflow-step">
+          <div class="step-num">5</div>
+          <div class="step-body">
+            <h4>Final Approval &amp; Launch Checklist</h4>
+            <p>Nothing goes live without a signed-off approval and a completed launch checklist: all assets reviewed, all tracking set up, all partners notified, all team members briefed on timing.</p>
+            <div class="step-tools">
+              <span class="tool-chip">Launch checklist template</span>
+              <span class="tool-chip">Go/No-Go meeting</span>
+            </div>
+          </div>
+        </div>
+        <div class="workflow-step">
+          <div class="step-num">6</div>
+          <div class="step-body">
+            <h4>In-Flight Monitoring &amp; Reporting</h4>
+            <p>Weekly performance pulls from all channels. Monthly campaign report to leadership — one page, numbers + narrative. If something is underperforming, I flag it in week 2, not week 8.</p>
+            <div class="step-tools">
+              <span class="tool-chip">Google Looker Studio</span>
+              <span class="tool-chip">Weekly dashboard</span>
+              <span class="tool-chip">Anomaly alerts</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal">
+        <h3 class="mb-24">RACI: Who Does What</h3>
+        <div style="overflow-x:auto;">
+          <table class="raci-table">
+            <thead>
+              <tr>
+                <th>Activity</th>
+                <th>PM (Me)</th>
+                <th>CMO</th>
+                <th>Agency</th>
+                <th>Legal</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Campaign strategy brief</td>
+                <td class="raci-r">R</td>
+                <td class="raci-a">A</td>
+                <td class="raci-c">C</td>
+                <td class="raci-i">I</td>
+              </tr>
+              <tr>
+                <td>Creative concept development</td>
+                <td class="raci-c">C</td>
+                <td class="raci-c">C</td>
+                <td class="raci-r">R</td>
+                <td class="raci-i">I</td>
+              </tr>
+              <tr>
+                <td>Creative review &amp; approval</td>
+                <td class="raci-r">R</td>
+                <td class="raci-a">A</td>
+                <td class="raci-i">I</td>
+                <td class="raci-c">C</td>
+              </tr>
+              <tr>
+                <td>Media plan approval</td>
+                <td class="raci-r">R</td>
+                <td class="raci-a">A</td>
+                <td class="raci-c">C</td>
+                <td class="raci-i">I</td>
+              </tr>
+              <tr>
+                <td>Vendor contract management</td>
+                <td class="raci-r">R</td>
+                <td class="raci-a">A</td>
+                <td class="raci-i">I</td>
+                <td class="raci-c">C</td>
+              </tr>
+              <tr>
+                <td>Budget tracking</td>
+                <td class="raci-r">R</td>
+                <td class="raci-a">A</td>
+                <td class="raci-i">I</td>
+                <td class="raci-i">I</td>
+              </tr>
+              <tr>
+                <td>Campaign performance reporting</td>
+                <td class="raci-r">R</td>
+                <td class="raci-a">A</td>
+                <td class="raci-c">C</td>
+                <td class="raci-i">I</td>
+              </tr>
+              <tr>
+                <td>Stakeholder communications</td>
+                <td class="raci-r">R</td>
+                <td class="raci-a">A</td>
+                <td class="raci-i">I</td>
+                <td class="raci-i">I</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="mt-16" style="font-size:0.8rem;color:var(--gray-mid);"><strong>R</strong> = Responsible &nbsp;|&nbsp; <strong>A</strong> = Accountable &nbsp;|&nbsp; <strong>C</strong> = Consulted &nbsp;|&nbsp; <strong>I</strong> = Informed</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WEEKLY RHYTHM -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow">Operational Cadence</span>
+      <h2>My Weekly Coordination Rhythm</h2>
+      <div class="accent-line"></div>
+      <p>Good program management is predictable. Here's how a typical week runs — structured enough to catch issues early, flexible enough to respond to what comes up.</p>
+    </div>
+    <div class="rhythm-grid reveal">
+      <div class="rhythm-day mon">
+        <div class="rhythm-day-name">Monday</div>
+        <ul>
+          <li>Pull weekend campaign metrics</li>
+          <li>Review agency deliverable queue</li>
+          <li>Send weekly team priorities memo</li>
+          <li>Clear email backlog from Friday</li>
+        </ul>
+      </div>
+      <div class="rhythm-day tue">
+        <div class="rhythm-day-name">Tuesday</div>
+        <ul>
+          <li>Creative agency weekly sync</li>
+          <li>Internal stakeholder check-ins</li>
+          <li>Brief review / new project intake</li>
+          <li>Budget reconciliation update</li>
+        </ul>
+      </div>
+      <div class="rhythm-day wed">
+        <div class="rhythm-day-name">Wednesday</div>
+        <ul>
+          <li>Media agency performance review</li>
+          <li>Content calendar review &amp; approvals</li>
+          <li>Cross-dept coordination (Ops, Comms)</li>
+          <li>Risk / issue log update</li>
+        </ul>
+      </div>
+      <div class="rhythm-day thu">
+        <div class="rhythm-day-name">Thursday</div>
+        <ul>
+          <li>Leadership / CMO sync</li>
+          <li>Partner / employer relationship calls</li>
+          <li>Draft weekly performance summary</li>
+          <li>Scope / timeline reviews with agencies</li>
+        </ul>
+      </div>
+      <div class="rhythm-day fri">
+        <div class="rhythm-day-name">Friday</div>
+        <ul>
+          <li>Send weekly campaign report</li>
+          <li>Close out week's approvals</li>
+          <li>Plan next week's priority queue</li>
+          <li>Document decisions / lessons</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCENARIOS -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow">Real-World Scenarios</span>
+      <h2>How I Handle Hard Situations</h2>
+      <div class="accent-line"></div>
+      <p>Every campaign hits turbulence. Here's how I'd respond to common high-stakes scenarios in this role.</p>
+    </div>
+    <div class="reveal">
+      <div class="scenario">
+        <div class="scenario-header">
+          <div class="scenario-icon">&#128680;</div>
+          <div>
+            <h3>Scenario: The Agency Misses a Major Deadline</h3>
+            <p>The creative agency was supposed to deliver hero video assets two weeks before launch. They're now 5 days out and still not done.</p>
+          </div>
+        </div>
+        <div class="scenario-response">
+          <h4>My Response</h4>
+          <ul class="scenario-steps">
+            <li>Call the agency account lead immediately — get a realistic delivery date, not a hopeful one</li>
+            <li>Assess what can launch on time vs. what needs to be delayed or swapped for a simpler asset</li>
+            <li>Brief my CMO same day: here's the situation, here's my recommendation, here's what I need from you (if anything)</li>
+            <li>Explore contingencies: can we launch with still images while video finalizes? Can media buy be delayed 3 days?</li>
+            <li>Document the miss formally and schedule a post-mortem to fix the process — then hold the agency to the written correction</li>
+          </ul>
+        </div>
+      </div>
+      <div class="scenario">
+        <div class="scenario-header">
+          <div class="scenario-icon">&#9881;</div>
+          <div>
+            <h3>Scenario: Internal Stakeholders Send Conflicting Feedback</h3>
+            <p>Legal wants changes to copy. Government Affairs wants a different message priority. The CMO wants the original direction. The agency is waiting.</p>
+          </div>
+        </div>
+        <div class="scenario-response">
+          <h4>My Response</h4>
+          <ul class="scenario-steps">
+            <li>Pause the agency review clock — don't let conflicting notes land on their desk</li>
+            <li>Convene a 30-minute internal alignment call with all three stakeholders — not email threads</li>
+            <li>Facilitate the conversation: "We agree on X. The disagreement is Y. Here's the decision we need to make."</li>
+            <li>Escalate to CMO if stakeholders can't resolve — present options with tradeoffs, not just the problem</li>
+            <li>Once decided, send a single consolidated brief back to the agency with one set of notes</li>
+          </ul>
+        </div>
+      </div>
+      <div class="scenario">
+        <div class="scenario-header">
+          <div class="scenario-icon">&#128200;</div>
+          <div>
+            <h3>Scenario: A Key Campaign Channel Is Underperforming</h3>
+            <p>Six weeks in, paid social is at 40% of projected click-through rate. The media agency shrugs and says "give it more time."</p>
+          </div>
+        </div>
+        <div class="scenario-response">
+          <h4>My Response</h4>
+          <ul class="scenario-steps">
+            <li>Pull the full channel breakdown — is this platform-wide or specific to one audience / creative?</li>
+            <li>Request a formal diagnosis from the media agency: what's their hypothesis? What test will they run?</li>
+            <li>Set a 2-week optimization window with clear success criteria — not open-ended "let's see"</li>
+            <li>If no improvement, recommend reallocating spend to a stronger channel and present the data to CMO</li>
+            <li>Update the measurement framework to capture what we're learning for the next campaign</li>
+          </ul>
+        </div>
+      </div>
+      <div class="scenario">
+        <div class="scenario-header">
+          <div class="scenario-icon">&#128178;</div>
+          <div>
+            <h3>Scenario: Mid-Year Budget Cut of 20%</h3>
+            <p>Finance comes back with a 20% reduction to the marketing budget. The campaign is already in flight.</p>
+          </div>
+        </div>
+        <div class="scenario-response">
+          <h4>My Response</h4>
+          <ul class="scenario-steps">
+            <li>Map every active spend line to campaign objectives — identify what drives results vs. what's "nice to have"</li>
+            <li>Build three scenarios: cut low-performing channels, reduce scope of future phases, or pause one audience segment</li>
+            <li>Present to CMO with my recommendation and the tradeoff each option creates</li>
+            <li>Communicate changes to agencies with clear scope adjustments and revised SOWs</li>
+            <li>Update the measurement dashboard to reflect new targets — don't hold the campaign to original KPIs with 20% less resource</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AGENCY MANAGEMENT -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow">Agency Management</span>
+      <h2>How I Run Vendor Relationships</h2>
+      <div class="accent-line"></div>
+      <p>Agencies perform best when the client is organized, decisive, and honest. I'm all three. Here's what that looks like in practice.</p>
+    </div>
+    <div class="agency-grid reveal">
+      <div class="agency-card">
+        <div class="agency-type">Creative Agency</div>
+        <h4>Clear Briefs, Fast Decisions</h4>
+        <p>Agencies waste hours interpreting vague requests. I write tight briefs and convene fast alignment calls. When they present work, I come with consolidated, actionable feedback — not "I'll think about it."</p>
+        <div class="agency-practices">&#128203; SOW reviews · Monthly scope check-ins · Quarterly performance reviews</div>
+      </div>
+      <div class="agency-card">
+        <div class="agency-type">Media Buying Agency</div>
+        <h4>Data-First Accountability</h4>
+        <p>I require a structured reporting cadence from day one: what we're measuring, how often, in what format. Media agencies who can't show me weekly performance data on a dashboard get a hard conversation in week 3.</p>
+        <div class="agency-practices">&#128200; Weekly reporting · Monthly optimization reviews · Quarterly strategic assessments</div>
+      </div>
+      <div class="agency-card">
+        <div class="agency-type">PR / Comms Agency</div>
+        <h4>Integrated Into the Campaign</h4>
+        <p>PR shouldn't be a silo. I integrate the PR agency into the campaign calendar from day one so they can amplify paid and owned moments with earned media coverage at the right time.</p>
+        <div class="agency-practices">&#128240; Shared content calendar · Rapid response protocol · Monthly media relationship updates</div>
+      </div>
+      <div class="agency-card">
+        <div class="agency-type">All Vendors</div>
+        <h4>Fair but Firm Contracts</h4>
+        <p>I know how to read a scope of work, spot scope creep early, and renegotiate when reality diverges from the original SOW. I also know how to recognize when we're the problem — and fix that first.</p>
+        <div class="agency-practices">&#128203; SOW ownership · Change order tracking · Annual performance reviews</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOOLS -->
+<section class="section">
+  <div class="container">
+    <div class="section-header centered">
+      <span class="section-eyebrow">Tools &amp; Systems</span>
+      <h2>My PM Toolkit</h2>
+      <div class="accent-line"></div>
+    </div>
+    <div class="grid-3 reveal">
+      <div class="card">
+        <div class="card-body">
+          <div class="card-icon teal">&#128203;</div>
+          <h3>Project Management</h3>
+          <p>Asana, Monday.com, or Smartsheet for campaign timelines. Every project has an owner, a deadline, and a status visible to the full team — no status updates via memory.</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <div class="card-icon blue">&#128202;</div>
+          <h3>Analytics &amp; Reporting</h3>
+          <p>Google Analytics 4, Looker Studio, and platform-native dashboards (Meta, LinkedIn, Google Ads). Monthly reports built in Looker Studio — shareable links, no emailing decks.</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <div class="card-icon orange">&#128100;</div>
+          <h3>Asset Management</h3>
+          <p>Bynder or a structured Google Drive architecture with naming conventions and version control. Creative chaos is one of the most preventable PM failures.</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <div class="card-icon teal">&#128172;</div>
+          <h3>Communication</h3>
+          <p>Slack for real-time, email for decisions-of-record. Every external agency gets a shared Slack channel. I respond within the hour during business hours — always.</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <div class="card-icon blue">&#128247;</div>
+          <h3>Creative Review</h3>
+          <p>Frame.io for video review, Google Slides for campaign presentations, and a consolidation step before any feedback goes to agencies. One set of notes, maximum twice.</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <div class="card-icon orange">&#128230;</div>
+          <h3>Budget Management</h3>
+          <p>Excel or Google Sheets budget tracker with commitment tracking, actuals vs. plan, and encumbered-vs-spent visibility. Updated weekly; shared with finance monthly.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEXT -->
+<section class="section-sm">
+  <div class="container text-center">
+    <p class="mb-16" style="color:var(--gray-mid);font-size:0.9rem;">NEXT SECTION</p>
+    <h3 class="mb-8">About Me &amp; Why I'm the Right Fit</h3>
+    <p class="mb-24">The background, experience, and perspective I'd bring to SamTrans on day one.</p>
+    <a href="about.html" class="btn btn-primary">Meet Me &rarr;</a>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-tagline">SamTrans: 50 Years Strong, 50 Years Forward</div>
+    <nav class="footer-nav">
+      <a href="index.html">Home</a>
+      <a href="analysis.html">Campaign Analysis</a>
+      <a href="campaign.html">My Proposal</a>
+      <a href="coordination.html">PM Approach</a>
+      <a href="about.html">About Me</a>
+    </nav>
+    <p class="footer-sub">Portfolio prepared for the Integrated Marketing Program Manager position at SamTrans.</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

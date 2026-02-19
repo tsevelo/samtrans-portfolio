@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Campaign Proposal — SamTrans Portfolio</title>
+  <meta name="description" content="'50 Years Strong, 50 Years Forward' — an integrated marketing campaign proposal for SamTrans." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .campaign-title-block {
+      background: linear-gradient(135deg, var(--orange-dark), var(--orange));
+      border-radius: var(--radius-lg);
+      padding: 40px;
+      color: white;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .campaign-title-block h2 { color: white; font-size: clamp(1.6rem, 4vw, 2.5rem); }
+    .campaign-title-block p  { color: rgba(255,255,255,0.88); font-size: 1.05rem; margin-top: 12px; }
+    .campaign-title-block .tagline { font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 700; opacity: 0.8; margin-bottom: 8px; }
+
+    .audience-card {
+      padding: 24px;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--gray-light);
+      background: white;
+      height: 100%;
+    }
+    .audience-icon { font-size: 2rem; margin-bottom: 12px; }
+    .audience-card h3 { font-size: 1rem; margin-bottom: 8px; }
+    .audience-size { font-size: 0.75rem; color: var(--gray-mid); margin-bottom: 12px; }
+    .audience-insight { font-size: 0.875rem; color: var(--gray-dark); border-top: 1px solid var(--gray-light); padding-top: 12px; margin-top: 12px; }
+
+    .pillar-card {
+      padding: 28px;
+      border-radius: var(--radius-lg);
+      color: white;
+      height: 100%;
+    }
+    .pillar-card.p1 { background: linear-gradient(135deg, var(--blue-dark), var(--blue)); }
+    .pillar-card.p2 { background: linear-gradient(135deg, var(--teal-dark), var(--teal)); }
+    .pillar-card.p3 { background: linear-gradient(135deg, #5a2d82, #8e44ad); }
+    .pillar-card h3 { color: white; margin-bottom: 10px; }
+    .pillar-card p  { color: rgba(255,255,255,0.82); font-size: 0.9rem; }
+    .pillar-num { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.7; margin-bottom: 8px; }
+    .pillar-examples { margin-top: 16px; }
+    .pillar-examples li {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.75);
+      padding: 4px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      list-style: none;
+    }
+    .pillar-examples li:last-child { border-bottom: none; }
+    .pillar-examples li::before { content: '→ '; }
+
+    .phase-block {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin-bottom: 24px;
+      border: 1px solid var(--gray-light);
+    }
+    .phase-header {
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .phase-header.ph1 { background: var(--blue-light); }
+    .phase-header.ph2 { background: var(--teal-light); }
+    .phase-header.ph3 { background: var(--orange-light); }
+    .phase-header.ph4 { background: var(--gray-light); }
+    .phase-num {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 1rem;
+      font-family: 'Montserrat', sans-serif;
+      flex-shrink: 0;
+    }
+    .ph1 .phase-num { background: var(--blue); color: white; }
+    .ph2 .phase-num { background: var(--teal); color: white; }
+    .ph3 .phase-num { background: var(--orange); color: white; }
+    .ph4 .phase-num { background: var(--dark); color: white; }
+    .phase-header h4 { margin: 0; }
+    .phase-header .phase-dates { font-size: 0.8rem; color: var(--gray-mid); }
+    .phase-body { padding: 20px 24px; background: white; }
+    .phase-body ul { padding: 0; }
+    .phase-body li { font-size: 0.875rem; color: var(--gray-dark); padding: 6px 0; border-bottom: 1px solid var(--gray-light); list-style: none; display: flex; gap: 8px; }
+    .phase-body li:last-child { border-bottom: none; }
+    .phase-body li::before { content: '▸'; color: var(--teal); font-weight: 700; flex-shrink: 0; }
+
+    .kpi-table { width: 100%; border-collapse: collapse; }
+    .kpi-table th { background: var(--dark); color: white; padding: 12px 16px; text-align: left; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.05em; }
+    .kpi-table td { padding: 12px 16px; border-bottom: 1px solid var(--gray-light); font-size: 0.875rem; vertical-align: top; }
+    .kpi-table tr:last-child td { border-bottom: none; }
+    .kpi-table tr:nth-child(even) td { background: var(--gray-light); }
+    .kpi-table .kpi-goal { font-weight: 700; color: var(--teal-dark); }
+    .kpi-table .kpi-channel { color: var(--blue); font-weight: 500; }
+
+    .channel-mix {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 16px;
+    }
+    .mix-item {
+      padding: 20px 16px;
+      border-radius: var(--radius);
+      text-align: center;
+      border: 2px solid transparent;
+      transition: all var(--transition);
+      cursor: default;
+    }
+    .mix-item:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+    .mix-item.primary   { background: var(--blue-light);   border-color: var(--blue);   }
+    .mix-item.secondary { background: var(--teal-light);   border-color: var(--teal);   }
+    .mix-item.support   { background: var(--orange-light); border-color: var(--orange); }
+    .mix-item.earned    { background: var(--gray-light);   border-color: #aaa;          }
+    .mix-item .mix-icon { font-size: 1.6rem; margin-bottom: 8px; }
+    .mix-item .mix-name { font-weight: 600; font-size: 0.9rem; color: var(--dark); margin-bottom: 4px; }
+    .mix-item .mix-role { font-size: 0.75rem; color: var(--gray-mid); }
+    .mix-item .mix-alloc { font-size: 0.7rem; font-weight: 700; margin-top: 8px; }
+    .mix-item.primary .mix-alloc   { color: var(--blue); }
+    .mix-item.secondary .mix-alloc { color: var(--teal); }
+    .mix-item.support .mix-alloc   { color: var(--orange-dark); }
+    .mix-item.earned .mix-alloc    { color: var(--gray-dark); }
+  </style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="container navbar-inner">
+    <a href="index.html" class="navbar-brand">
+      <div class="brand-bar"></div>
+      <div class="brand-text">SamTrans <span>Portfolio</span></div>
+    </a>
+    <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="navbar-nav">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="analysis.html">Campaign Analysis</a></li>
+      <li><a href="campaign.html">My Proposal</a></li>
+      <li><a href="coordination.html">PM Approach</a></li>
+      <li><a href="about.html">About Me</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="container page-hero-content">
+    <div class="page-num-badge">&#128161; Section 02 of 04</div>
+    <span class="section-eyebrow">Campaign Proposal</span>
+    <h1>50 Years Strong,<br>50 Years Forward</h1>
+    <p>An integrated marketing campaign that converts anniversary momentum into long-term ridership growth, brand loyalty, and community investment in transit's future.</p>
+  </div>
+</section>
+
+<!-- CAMPAIGN CONCEPT -->
+<section class="section">
+  <div class="container">
+    <div class="campaign-title-block reveal">
+      <div class="tagline">The Campaign Theme</div>
+      <h2>"50 Years Strong, 50 Years Forward"</h2>
+      <p>SamTrans has been the connective tissue of San Mateo County for half a century. Now, as we invest in the next 50 years — new vehicles, new routes, new technologies, a greener grid — we invite the community to be part of that future. Every ride is a vote for the county we want to become.</p>
+    </div>
+
+    <div class="grid-2">
+      <div class="reveal">
+        <div class="section-eyebrow">Strategic Objectives</div>
+        <h3 class="mb-16 mt-8">What This Campaign Must Accomplish</h3>
+        <div class="checklist">
+          <ul>
+            <li><strong>Convert anniversary awareness into trial ridership</strong> — move casual supporters to regular riders</li>
+            <li><strong>Establish SamTrans as a forward-looking innovator</strong> — not just a legacy institution, but a mobility leader</li>
+            <li><strong>Build a rider community with an identity</strong> — people who are proud to say they ride SamTrans</li>
+            <li><strong>Drive employer and institutional partnerships</strong> — framing commute mode-shift as a business value</li>
+            <li><strong>Create a content engine that sustains engagement year-round</strong> — not a burst campaign but an always-on presence</li>
+            <li><strong>Demonstrate marketing ROI</strong> — build the measurement framework the agency needs to make the case for marketing investment</li>
+          </ul>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="section-eyebrow">Campaign Philosophy</div>
+        <h3 class="mb-16 mt-8">How We'll Win</h3>
+        <div class="quote-block">
+          <p>"Transit agencies don't lose on quality — they lose on story. People know BART. They don't know SamTrans. This campaign makes SamTrans a brand people identify with, root for, and choose."</p>
+        </div>
+        <p>The campaign is built on three truths: (1) History earns trust. (2) Future earns excitement. (3) Community earns loyalty. Every asset, channel, and activation reflects at least one of these.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TARGET AUDIENCES -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow">Audience Strategy</span>
+      <h2>Who We're Talking To — and How</h2>
+      <div class="accent-line"></div>
+      <p>Different audiences require different messages, channels, and calls to action. This campaign segments intentionally rather than broadcasting generically.</p>
+    </div>
+    <div class="grid-3 reveal">
+      <div class="audience-card">
+        <div class="audience-icon">&#128105;&#8205;&#128187;</div>
+        <h3>Young Professionals &amp; Students</h3>
+        <div class="audience-size">Ages 18–34 · Primary Growth Segment</div>
+        <p style="font-size:0.875rem;">New to the workforce or the Peninsula. Transit-curious, sustainability-motivated, cost-conscious. They'll become lifelong riders if we meet them now.</p>
+        <div class="audience-insight">
+          <strong>Message:</strong> "Your commute does more than get you to work. It shapes the region you live in."<br><br>
+          <strong>Channels:</strong> Instagram Reels, TikTok, campus activations, streaming audio
+        </div>
+      </div>
+      <div class="audience-card">
+        <div class="audience-icon">&#128188;</div>
+        <h3>Peninsula Commuters</h3>
+        <div class="audience-size">Ages 30–55 · Ridership Recovery Segment</div>
+        <p style="font-size:0.875rem;">Drove pre-pandemic, returned post-COVID, open to transit again if the reliability story is compelling. Employer pass programs are a key conversion lever.</p>
+        <div class="audience-insight">
+          <strong>Message:</strong> "Your employer saves when you ride. So does the planet. So does your commute."<br><br>
+          <strong>Channels:</strong> LinkedIn, email, employer partnership programs, out-of-home near stations
+        </div>
+      </div>
+      <div class="audience-card">
+        <div class="audience-icon">&#127981;</div>
+        <h3>Civic &amp; Business Leaders</h3>
+        <div class="audience-size">Decision-Makers · Advocacy Segment</div>
+        <p style="font-size:0.875rem;">City council members, chamber leaders, developers, employers. They shape policy, allocate parking, and set commute culture. SamTrans needs them as amplifiers and advocates.</p>
+        <div class="audience-insight">
+          <strong>Message:</strong> "The companies and cities that invest in transit infrastructure will attract and retain talent for the next decade."<br><br>
+          <strong>Channels:</strong> Events, executive briefings, earned media, LinkedIn
+        </div>
+      </div>
+      <div class="audience-card">
+        <div class="audience-icon">&#128106;</div>
+        <h3>Essential Workers &amp; Dependent Riders</h3>
+        <div class="audience-size">Core Riders · Retention &amp; Advocacy Segment</div>
+        <p style="font-size:0.875rem;">The backbone of SamTrans ridership. They ride because they need to — but they deserve to feel like they matter, not like an afterthought. Their stories are the campaign's most powerful content.</p>
+        <div class="audience-insight">
+          <strong>Message:</strong> "You've been with us for 50 years. We're building the next 50 around you."<br><br>
+          <strong>Channels:</strong> On-vehicle content, community events, Spanish-language outreach, Facebook
+        </div>
+      </div>
+      <div class="audience-card">
+        <div class="audience-icon">&#9889;</div>
+        <h3>Sustainability-Motivated Riders</h3>
+        <div class="audience-size">All Ages · Values-Based Segment</div>
+        <p style="font-size:0.875rem;">Climate-conscious San Mateo County residents who choose or want to choose transit as part of a low-carbon lifestyle. Electric bus fleet is a major hook.</p>
+        <div class="audience-insight">
+          <strong>Message:</strong> "Every SamTrans ride removes a car from the road. Our electric fleet means your commute is cleaner than ever."<br><br>
+          <strong>Channels:</strong> Digital display, environmental partnerships, NextDoor, earned media
+        </div>
+      </div>
+      <div class="audience-card">
+        <div class="audience-icon">&#128161;</div>
+        <h3>The Unconverted</h3>
+        <div class="audience-size">Non-Riders · Awareness &amp; Trial Segment</div>
+        <p style="font-size:0.875rem;">People who drive by default and haven't thought seriously about transit. They need awareness, then an easy on-ramp trial (free ride promotion, app promo, route finder).</p>
+        <div class="audience-insight">
+          <strong>Message:</strong> "You might be surprised how easy it is. Try it free."<br><br>
+          <strong>Channels:</strong> Paid social, search, geotargeted display, OOH, radio
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MESSAGE PILLARS -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow">Message Architecture</span>
+      <h2>Three Pillars, One Voice</h2>
+      <div class="accent-line"></div>
+      <p>All campaign content ladders up to one of three message pillars. Every asset, post, and activation is accountable to a pillar — no off-strategy content.</p>
+    </div>
+    <div class="grid-3 reveal">
+      <div class="pillar-card p1">
+        <div class="pillar-num">Pillar 01</div>
+        <h3>Rooted in This Community</h3>
+        <p>We've been here through every chapter of San Mateo County's story. We know these roads, these neighborhoods, these people.</p>
+        <div class="pillar-examples">
+          <ul>
+            <li>Rider story series featuring real passengers</li>
+            <li>Historical archive content — 50 years of routes</li>
+            <li>Community milestone map (births, commutes, graduations SamTrans made possible)</li>
+            <li>Driver and operator spotlights</li>
+          </ul>
+        </div>
+      </div>
+      <div class="pillar-card p2">
+        <div class="pillar-num">Pillar 02</div>
+        <h3>Built for What's Next</h3>
+        <p>We're not standing still. New electric buses, improved frequency, real-time tech, and expanded access are reshaping what transit looks like in the county.</p>
+        <div class="pillar-examples">
+          <ul>
+            <li>Electric fleet reveal campaign</li>
+            <li>Future route and investment announcements</li>
+            <li>"What's Next" video series with leadership</li>
+            <li>Data visualization: your county by transit</li>
+          </ul>
+        </div>
+      </div>
+      <div class="pillar-card p3">
+        <div class="pillar-num">Pillar 03</div>
+        <h3>Better Together</h3>
+        <p>Every rider is part of something bigger — a county that moves together, reduces congestion, and builds a more equitable, livable region for everyone.</p>
+        <div class="pillar-examples">
+          <ul>
+            <li>Employer commuter challenge campaigns</li>
+            <li>Environmental impact calculator ("your rides = X cars off road")</li>
+            <li>Co-branded city/town campaigns</li>
+            <li>"Forward Together" community pledge</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHANNEL MIX -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow">Channel Strategy</span>
+      <h2>Where the Campaign Lives</h2>
+      <div class="accent-line"></div>
+    </div>
+    <div class="channel-mix reveal">
+      <div class="mix-item primary">
+        <div class="mix-icon">&#128247;</div>
+        <div class="mix-name">Paid Social</div>
+        <div class="mix-role">Awareness &amp; trial conversion</div>
+        <div class="mix-alloc">Primary · ~25% of media</div>
+      </div>
+      <div class="mix-item primary">
+        <div class="mix-icon">&#127911;</div>
+        <div class="mix-name">Streaming Audio</div>
+        <div class="mix-role">Commuter reach, local targeting</div>
+        <div class="mix-alloc">Primary · ~12% of media</div>
+      </div>
+      <div class="mix-item primary">
+        <div class="mix-icon">&#127968;</div>
+        <div class="mix-name">Out-of-Home</div>
+        <div class="mix-role">Station, transit, and employer proximity</div>
+        <div class="mix-alloc">Primary · ~15% of media</div>
+      </div>
+      <div class="mix-item secondary">
+        <div class="mix-icon">&#128269;</div>
+        <div class="mix-name">Search / SEM</div>
+        <div class="mix-role">Intent capture, route discovery</div>
+        <div class="mix-alloc">Secondary · ~10% of media</div>
+      </div>
+      <div class="mix-item secondary">
+        <div class="mix-icon">&#128140;</div>
+        <div class="mix-name">Email / CRM</div>
+        <div class="mix-role">Rider retention, program promotion</div>
+        <div class="mix-alloc">Secondary · owned channel</div>
+      </div>
+      <div class="mix-item secondary">
+        <div class="mix-icon">&#127758;</div>
+        <div class="mix-name">Community Events</div>
+        <div class="mix-role">Relationship and trust building</div>
+        <div class="mix-alloc">Secondary · experiential</div>
+      </div>
+      <div class="mix-item support">
+        <div class="mix-icon">&#128250;</div>
+        <div class="mix-name">Video / YouTube</div>
+        <div class="mix-role">Storytelling, brand depth</div>
+        <div class="mix-alloc">Support · ~8% of media</div>
+      </div>
+      <div class="mix-item support">
+        <div class="mix-icon">&#128187;</div>
+        <div class="mix-name">Display / Programmatic</div>
+        <div class="mix-role">Retargeting, broad awareness</div>
+        <div class="mix-alloc">Support · ~8% of media</div>
+      </div>
+      <div class="mix-item earned">
+        <div class="mix-icon">&#128240;</div>
+        <div class="mix-name">PR / Earned Media</div>
+        <div class="mix-role">Credibility, amplification</div>
+        <div class="mix-alloc">Earned · no media cost</div>
+      </div>
+      <div class="mix-item earned">
+        <div class="mix-icon">&#128101;</div>
+        <div class="mix-name">Partnerships</div>
+        <div class="mix-role">Employer, city, nonprofit co-marketing</div>
+        <div class="mix-alloc">Earned · no media cost</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAMPAIGN PHASES -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow">Campaign Timeline</span>
+      <h2>Four Phases, One Arc</h2>
+      <div class="accent-line"></div>
+      <p>The campaign is structured as a year-long arc — not a burst and rest, but a sustained drumbeat with seasonal peaks tied to commuter behavior and SamTrans milestones.</p>
+    </div>
+    <div class="reveal">
+      <div class="phase-block">
+        <div class="phase-header ph1">
+          <div class="phase-num">1</div>
+          <div>
+            <h4>Launch — "The Next Chapter Begins"</h4>
+            <div class="phase-dates">Months 1–2 · Campaign kickoff and brand platform launch</div>
+          </div>
+        </div>
+        <div class="phase-body">
+          <ul>
+            <li>Campaign brand launch — new visual identity extension from 50th anniversary palette</li>
+            <li>Full campaign TVC / video launch across streaming and social</li>
+            <li>Press release and media briefing with CEO and Board Chair</li>
+            <li>Employer partner program launch — 10 target companies in month 1</li>
+            <li>Social content series kicks off: "50 Riders, 50 Stories" (one per week, 50 weeks)</li>
+            <li>Free trial ride promotion — app download + route discovery callout</li>
+          </ul>
+        </div>
+      </div>
+      <div class="phase-block">
+        <div class="phase-header ph2">
+          <div class="phase-num">2</div>
+          <div>
+            <h4>Build — "Community in Motion"</h4>
+            <div class="phase-dates">Months 3–6 · Deepening and widening reach</div>
+          </div>
+        </div>
+        <div class="phase-body">
+          <ul>
+            <li>Electric fleet reveal event — media day, social live coverage, rider celebration</li>
+            <li>Youth rider activation: campus partnerships, student transit pass promotion</li>
+            <li>"Better Together" commuter challenge — employer teams compete on transit days</li>
+            <li>Spanish-language campaign expansion across all primary channels</li>
+            <li>Civic leader briefing series — quarterly lunches with municipal partners</li>
+            <li>Rider story campaign peaks — major production push, long-form video features</li>
+          </ul>
+        </div>
+      </div>
+      <div class="phase-block">
+        <div class="phase-header ph3">
+          <div class="phase-num">3</div>
+          <div>
+            <h4>Peak — "The Forward Push"</h4>
+            <div class="phase-dates">Months 7–9 · Maximum investment, fall commuter season</div>
+          </div>
+        </div>
+        <div class="phase-body">
+          <ul>
+            <li>Back-to-work / back-to-school media blitz — highest paid media spend of the year</li>
+            <li>Annual SamTrans Community Summit — riders, advocates, partners, and media</li>
+            <li>Out-of-home takeover campaign in Peninsula job corridors</li>
+            <li>Commuter habit challenge: "30 Days on SamTrans" — social documentary series</li>
+            <li>Mid-year campaign performance review — adjust channel mix based on data</li>
+            <li>Partnership announcement push — new employer, city, or nonprofit co-brands</li>
+          </ul>
+        </div>
+      </div>
+      <div class="phase-block">
+        <div class="phase-header ph4">
+          <div class="phase-num">4</div>
+          <div>
+            <h4>Sustain — "Always Moving"</h4>
+            <div class="phase-dates">Months 10–12 · Year-round momentum and next-year planning</div>
+          </div>
+        </div>
+        <div class="phase-body">
+          <ul>
+            <li>Holiday and year-end campaign — gratitude, community, celebration</li>
+            <li>Annual Impact Report launch — marketing storytelling around ridership data</li>
+            <li>Campaign audit and results briefing with leadership</li>
+            <li>Next-year planning kickoff — community insights, rider feedback, channel performance</li>
+            <li>"Rider of the Year" recognition — community engagement and press moment</li>
+            <li>Refresh content series — begin year-2 pilot content and testing</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KPIs -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow">Measurement Framework</span>
+      <h2>What We're Optimizing For</h2>
+      <div class="accent-line"></div>
+      <p>Every campaign needs a measurement framework locked in before launch. Here's what success looks like for "50 Years Strong, 50 Years Forward."</p>
+    </div>
+    <div class="reveal" style="overflow-x:auto;">
+      <table class="kpi-table">
+        <thead>
+          <tr>
+            <th>Metric</th>
+            <th>Goal (Year 1)</th>
+            <th>Primary Channel</th>
+            <th>Measurement Method</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Campaign reach (unduplicated)</td>
+            <td class="kpi-goal">2M+ impressions/quarter</td>
+            <td class="kpi-channel">Paid Social + OOH</td>
+            <td>Media platform reporting + Nielsen</td>
+          </tr>
+          <tr>
+            <td>App downloads &amp; new account creation</td>
+            <td class="kpi-goal">+30% YoY growth</td>
+            <td class="kpi-channel">Paid Social + Search</td>
+            <td>App analytics (GA4 / Firebase)</td>
+          </tr>
+          <tr>
+            <td>Ridership lift (campaign corridors)</td>
+            <td class="kpi-goal">+8% in targeted zones</td>
+            <td class="kpi-channel">All channels</td>
+            <td>Farebox data vs. control corridors</td>
+          </tr>
+          <tr>
+            <td>Employer partner program enrollments</td>
+            <td class="kpi-goal">25 employer partners</td>
+            <td class="kpi-channel">LinkedIn + Events</td>
+            <td>CRM / partnership agreements</td>
+          </tr>
+          <tr>
+            <td>Earned media placements</td>
+            <td class="kpi-goal">50+ placements, 3 national</td>
+            <td class="kpi-channel">PR + Events</td>
+            <td>Media monitoring (Cision / Meltwater)</td>
+          </tr>
+          <tr>
+            <td>Social engagement rate</td>
+            <td class="kpi-goal">&gt;3.5% avg across platforms</td>
+            <td class="kpi-channel">Instagram, LinkedIn, Facebook</td>
+            <td>Native analytics + Sprout Social</td>
+          </tr>
+          <tr>
+            <td>Email open rate (rider communications)</td>
+            <td class="kpi-goal">&gt;28% open, &gt;4% CTR</td>
+            <td class="kpi-channel">Email / CRM</td>
+            <td>Mailchimp / HubSpot analytics</td>
+          </tr>
+          <tr>
+            <td>Brand sentiment (monthly survey)</td>
+            <td class="kpi-goal">Net Positive Sentiment &gt;70%</td>
+            <td class="kpi-channel">All channels</td>
+            <td>Quarterly brand tracker survey</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- NEXT -->
+<section class="section-sm">
+  <div class="container text-center">
+    <p class="mb-16" style="color:var(--gray-mid);font-size:0.9rem;">NEXT SECTION</p>
+    <h3 class="mb-8">The Coordination Reality</h3>
+    <p class="mb-24">A campaign this complex doesn't run itself. See how I'd manage the program management behind it — vendors, timelines, approvals, and stakeholders.</p>
+    <a href="coordination.html" class="btn btn-orange">See PM Approach &rarr;</a>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-tagline">SamTrans: 50 Years Strong, 50 Years Forward</div>
+    <nav class="footer-nav">
+      <a href="index.html">Home</a>
+      <a href="analysis.html">Campaign Analysis</a>
+      <a href="campaign.html">My Proposal</a>
+      <a href="coordination.html">PM Approach</a>
+      <a href="about.html">About Me</a>
+    </nav>
+    <p class="footer-sub">Portfolio prepared for the Integrated Marketing Program Manager position at SamTrans.</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Campaign Analysis — SamTrans Portfolio</title>
+  <meta name="description" content="A strategic analysis of SamTrans's 50th anniversary campaign — strengths, gaps, and opportunities." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .scorecard {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin: 28px 0;
+    }
+    .score-item {
+      padding: 20px;
+      border-radius: var(--radius);
+      border: 1px solid var(--gray-light);
+      text-align: center;
+      background: white;
+    }
+    .score-grade {
+      font-size: 2.5rem;
+      font-weight: 800;
+      font-family: 'Montserrat', sans-serif;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .score-label { font-size: 0.8rem; color: var(--gray-mid); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
+    .score-note  { font-size: 0.8rem; color: var(--gray-dark); }
+    .grade-a { color: var(--teal); }
+    .grade-b { color: var(--blue); }
+    .grade-c { color: var(--orange); }
+
+    .channel-row {
+      display: flex; align-items: center; gap: 16px;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--gray-light);
+    }
+    .channel-row:last-child { border-bottom: none; }
+    .channel-icon { font-size: 1.4rem; width: 40px; text-align: center; flex-shrink: 0; }
+    .channel-info { flex: 1; }
+    .channel-info h4 { margin-bottom: 2px; }
+    .channel-info p  { font-size: 0.85rem; }
+    .channel-tag-wrap { flex-shrink: 0; }
+
+    .gap-item {
+      padding: 20px 24px;
+      border-radius: var(--radius);
+      border-left: 4px solid;
+      margin-bottom: 16px;
+      background: white;
+    }
+    .gap-item.miss  { border-color: var(--orange); background: var(--orange-light); }
+    .gap-item.opp   { border-color: var(--teal);   background: var(--teal-light);   }
+    .gap-item h4 { margin-bottom: 6px; }
+    .gap-item p  { font-size: 0.9rem; }
+
+    .finding-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    @media(max-width:640px) { .finding-grid { grid-template-columns: 1fr; } }
+
+    .finding-box {
+      padding: 24px;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--gray-light);
+    }
+    .finding-box.positive { border-top: 4px solid var(--teal); }
+    .finding-box.negative { border-top: 4px solid var(--orange); }
+    .finding-box .finding-label {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .finding-box.positive .finding-label { color: var(--teal); }
+    .finding-box.negative .finding-label { color: var(--orange); }
+    .finding-box ul { padding-left: 0; }
+    .finding-box ul li {
+      font-size: 0.9rem; color: var(--gray-dark);
+      padding: 8px 0;
+      border-bottom: 1px solid var(--gray-light);
+      display: flex; gap: 8px;
+    }
+    .finding-box ul li:last-child { border-bottom: none; }
+    .finding-box ul li span.bullet { flex-shrink: 0; font-weight: 700; }
+    .finding-box.positive ul li span.bullet { color: var(--teal); }
+    .finding-box.negative ul li span.bullet { color: var(--orange); }
+  </style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="container navbar-inner">
+    <a href="index.html" class="navbar-brand">
+      <div class="brand-bar"></div>
+      <div class="brand-text">SamTrans <span>Portfolio</span></div>
+    </a>
+    <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="navbar-nav">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="analysis.html">Campaign Analysis</a></li>
+      <li><a href="campaign.html">My Proposal</a></li>
+      <li><a href="coordination.html">PM Approach</a></li>
+      <li><a href="about.html">About Me</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="container page-hero-content">
+    <div class="page-num-badge">&#128270; Section 01 of 04</div>
+    <span class="section-eyebrow">Strategic Analysis</span>
+    <h1>SamTrans at 50: Campaign Review</h1>
+    <p>A close look at the 50th anniversary campaign — what resonated, where momentum could have been amplified, and what it tells us about the marketing infrastructure SamTrans needs going forward.</p>
+  </div>
+</section>
+
+<!-- ANALYST FRAMING -->
+<section class="section-sm">
+  <div class="container">
+    <div class="highlight-box teal reveal">
+      <h4>&#128221; Analyst's Note</h4>
+      <p>This analysis is based on publicly available campaign materials, social media presence, press releases, website content, and community events surrounding SamTrans's 50th anniversary. It's written from the perspective of someone who would inherit this campaign's legacy and build on it — not as a critic, but as a strategic inheritor.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CAMPAIGN OVERVIEW -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow">Campaign Overview</span>
+      <h2>What SamTrans Did for the 50th</h2>
+      <div class="accent-line"></div>
+      <p>SamTrans's 50th anniversary campaign marked a meaningful inflection point — an opportunity to celebrate history, build brand affinity, and mobilize the community around transit's future.</p>
+    </div>
+    <div class="grid-2">
+      <div class="reveal">
+        <h3 class="mb-16">Campaign Elements Observed</h3>
+        <div class="channel-row">
+          <div class="channel-icon">&#128247;</div>
+          <div class="channel-info">
+            <h4>Visual Identity &amp; Branding</h4>
+            <p>50th anniversary logomark and co-branding applied across vehicles, digital platforms, and event materials. Teal-and-orange palette unified the celebration aesthetic.</p>
+          </div>
+          <div class="channel-tag-wrap"><span class="tag tag-teal">Executed</span></div>
+        </div>
+        <div class="channel-row">
+          <div class="channel-icon">&#128197;</div>
+          <div class="channel-info">
+            <h4>Community Events &amp; Activations</h4>
+            <p>Free-ride days, community celebrations, and milestone events connected SamTrans to riders and residents across the county.</p>
+          </div>
+          <div class="channel-tag-wrap"><span class="tag tag-teal">Strong</span></div>
+        </div>
+        <div class="channel-row">
+          <div class="channel-icon">&#128241;</div>
+          <div class="channel-info">
+            <h4>Social Media &amp; Digital Content</h4>
+            <p>Throwback posts, historical photography, and milestone announcements appeared across LinkedIn, Facebook, and Instagram.</p>
+          </div>
+          <div class="channel-tag-wrap"><span class="tag tag-blue">Moderate</span></div>
+        </div>
+        <div class="channel-row">
+          <div class="channel-icon">&#128240;</div>
+          <div class="channel-info">
+            <h4>Press &amp; Media Relations</h4>
+            <p>Local press coverage of anniversary milestones and leadership statements placed SamTrans in regional news cycles.</p>
+          </div>
+          <div class="channel-tag-wrap"><span class="tag tag-blue">Moderate</span></div>
+        </div>
+        <div class="channel-row">
+          <div class="channel-icon">&#128483;</div>
+          <div class="channel-info">
+            <h4>Rider &amp; Community Storytelling</h4>
+            <p>Some passenger story features appeared, though this channel had significant room to grow into a sustained content series.</p>
+          </div>
+          <div class="channel-tag-wrap"><span class="tag tag-orange">Opportunity</span></div>
+        </div>
+        <div class="channel-row">
+          <div class="channel-icon">&#128101;</div>
+          <div class="channel-info">
+            <h4>Partner &amp; Civic Outreach</h4>
+            <p>Engagement with municipal partners, elected officials, and community organizations amplified reach beyond the transit audience.</p>
+          </div>
+          <div class="channel-tag-wrap"><span class="tag tag-teal">Executed</span></div>
+        </div>
+      </div>
+      <div class="reveal">
+        <h3 class="mb-16">Campaign Scorecard</h3>
+        <div class="scorecard">
+          <div class="score-item">
+            <div class="score-grade grade-a">A</div>
+            <div class="score-label">Brand Moment</div>
+            <div class="score-note">Anniversary identity was cohesive and visible</div>
+          </div>
+          <div class="score-item">
+            <div class="score-grade grade-a">A-</div>
+            <div class="score-label">Community Events</div>
+            <div class="score-note">Free rides and activations generated goodwill</div>
+          </div>
+          <div class="score-item">
+            <div class="score-grade grade-b">B</div>
+            <div class="score-label">Digital/Social</div>
+            <div class="score-note">Consistent presence, engagement varied</div>
+          </div>
+          <div class="score-item">
+            <div class="score-grade grade-b">B-</div>
+            <div class="score-label">Narrative Depth</div>
+            <div class="score-note">Historical focus outpaced forward vision</div>
+          </div>
+          <div class="score-item">
+            <div class="score-grade grade-c">C+</div>
+            <div class="score-label">Earned Media</div>
+            <div class="score-note">Regional, not statewide or national reach</div>
+          </div>
+          <div class="score-item">
+            <div class="score-grade grade-c">C</div>
+            <div class="score-label">Rider Conversion</div>
+            <div class="score-note">Hard to link celebration to ridership lift</div>
+          </div>
+        </div>
+        <div class="highlight-box blue mt-16">
+          <h4>Overall Assessment</h4>
+          <p>The 50th campaign successfully celebrated history and generated genuine community warmth. The gap is in converting that warmth into forward momentum — a clear next-step narrative, ridership calls to action, and measurable behavior change. This is exactly where the next campaign chapter begins.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINDINGS -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow">Strategic Findings</span>
+      <h2>What Worked — and What Didn't</h2>
+      <div class="accent-line"></div>
+    </div>
+    <div class="finding-grid reveal">
+      <div class="finding-box positive">
+        <div class="finding-label">&#9650; Strengths</div>
+        <ul>
+          <li><span class="bullet">+</span> Consistent visual brand identity across channels created a recognizable anniversary moment</li>
+          <li><span class="bullet">+</span> Free ride day was a high-impact, earned-media-friendly activation that drove genuine ridership</li>
+          <li><span class="bullet">+</span> Historical storytelling connected the agency's roots to longtime community members</li>
+          <li><span class="bullet">+</span> Leadership visibility (board members, CEO) gave the campaign institutional credibility</li>
+          <li><span class="bullet">+</span> Cross-departmental participation — operations, planning, community affairs — showed organizational buy-in</li>
+          <li><span class="bullet">+</span> Partner engagement with cities and elected officials extended reach beyond the transit bubble</li>
+        </ul>
+      </div>
+      <div class="finding-box negative">
+        <div class="finding-label">&#9651; Gaps &amp; Opportunities</div>
+        <ul>
+          <li><span class="bullet">!</span> The campaign looked backward more than forward — "50 years of history" without enough "here's what we're building next"</li>
+          <li><span class="bullet">!</span> No clear post-anniversary campaign to sustain momentum; the story had a launch but no second act</li>
+          <li><span class="bullet">!</span> Social content was reactive rather than planned — a series structure could have extended reach 10x</li>
+          <li><span class="bullet">!</span> Rider stories were underutilized — the human side of transit was present but not amplified</li>
+          <li><span class="bullet">!</span> No apparent measurement framework shared publicly — hard to know what the campaign was optimizing for</li>
+          <li><span class="bullet">!</span> Youth and next-generation rider audiences appear underserved in tone and channel mix</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHANNEL DEPTH ANALYSIS -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow">Channel Deep Dive</span>
+      <h2>Where Each Channel Performed</h2>
+      <div class="accent-line"></div>
+    </div>
+    <div class="grid-2">
+      <div class="reveal">
+        <h3 class="mb-24">Social &amp; Digital Media</h3>
+        <div class="progress-row">
+          <div class="progress-label"><span>Content Volume</span><span>75%</span></div>
+          <div class="progress-bar-track"><div class="progress-bar-fill fill-teal" data-width="75%"></div></div>
+        </div>
+        <div class="progress-row">
+          <div class="progress-label"><span>Content Series Structure</span><span>35%</span></div>
+          <div class="progress-bar-track"><div class="progress-bar-fill fill-orange" data-width="35%"></div></div>
+        </div>
+        <div class="progress-row">
+          <div class="progress-label"><span>Engagement Rate</span><span>55%</span></div>
+          <div class="progress-bar-track"><div class="progress-bar-fill fill-blue" data-width="55%"></div></div>
+        </div>
+        <div class="progress-row">
+          <div class="progress-label"><span>Forward-Looking Messaging</span><span>28%</span></div>
+          <div class="progress-bar-track"><div class="progress-bar-fill fill-orange" data-width="28%"></div></div>
+        </div>
+        <div class="progress-row">
+          <div class="progress-label"><span>Video / Rich Media</span><span>40%</span></div>
+          <div class="progress-bar-track"><div class="progress-bar-fill fill-blue" data-width="40%"></div></div>
+        </div>
+      </div>
+      <div class="reveal">
+        <h3 class="mb-24">Community &amp; Events</h3>
+        <div class="progress-row">
+          <div class="progress-label"><span>Event Execution</span><span>88%</span></div>
+          <div class="progress-bar-track"><div class="progress-bar-fill fill-teal" data-width="88%"></div></div>
+        </div>
+        <div class="progress-row">
+          <div class="progress-label"><span>Media Amplification</span><span>60%</span></div>
+          <div class="progress-bar-track"><div class="progress-bar-fill fill-blue" data-width="60%"></div></div>
+        </div>
+        <div class="progress-row">
+          <div class="progress-label"><span>Rider Data Capture</span><span>30%</span></div>
+          <div class="progress-bar-track"><div class="progress-bar-fill fill-orange" data-width="30%"></div></div>
+        </div>
+        <div class="progress-row">
+          <div class="progress-label"><span>Partner Co-Marketing</span><span>65%</span></div>
+          <div class="progress-bar-track"><div class="progress-bar-fill fill-teal" data-width="65%"></div></div>
+        </div>
+        <div class="progress-row">
+          <div class="progress-label"><span>Post-Event Follow-Through</span><span>42%</span></div>
+          <div class="progress-bar-track"><div class="progress-bar-fill fill-orange" data-width="42%"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GAPS -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow">Strategic Gaps</span>
+      <h2>What Was Missing — and How to Fix It</h2>
+      <div class="accent-line"></div>
+    </div>
+    <div class="grid-2">
+      <div>
+        <h3 class="mb-16">Critical Misses</h3>
+        <div class="gap-item miss reveal">
+          <h4>No Sustained Post-Celebration Narrative</h4>
+          <p>The anniversary was an event, not a campaign arc. There was no clearly telegraphed "what comes next" chapter that converted the goodwill into forward momentum. This is a content planning and campaign architecture gap.</p>
+        </div>
+        <div class="gap-item miss reveal">
+          <h4>Underinvestment in Rider Voice</h4>
+          <p>Transit agencies build trust through passengers, not just institutions. The anniversary was a perfect moment to gather 50 rider stories — in 50 days, 50 neighborhoods. That content series wasn't executed at scale.</p>
+        </div>
+        <div class="gap-item miss reveal">
+          <h4>No Visible Measurement Framework</h4>
+          <p>What did the campaign aim to move? Awareness? Ridership? Positive sentiment? Without a stated framework, campaigns default to vanity metrics and can't demonstrate ROI to boards or funders.</p>
+        </div>
+      </div>
+      <div>
+        <h3 class="mb-16">Opportunities to Capture</h3>
+        <div class="gap-item opp reveal">
+          <h4>Youth Rider Acquisition Campaign</h4>
+          <p>Young professionals and students are a critical long-term ridership base. The 50th was a missed opportunity to launch a dedicated youth campaign — youth passes, campus partnerships, lifestyle-angle content on TikTok and Instagram Reels.</p>
+        </div>
+        <div class="gap-item opp reveal">
+          <h4>Employer Commuter Partnerships</h4>
+          <p>Silicon Valley employers are major SamTrans stakeholders. The anniversary was the right context for launching or deepening commuter benefit partnerships — converting a brand moment into a business development play.</p>
+        </div>
+        <div class="gap-item opp reveal">
+          <h4>Earned Media Beyond Local Press</h4>
+          <p>A 50-year public transit anniversary is a story national transit publications, sustainability outlets, and urban planning media would cover. A targeted PR push could have put SamTrans in front of a much broader audience.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT THIS TELLS US -->
+<section style="background:var(--dark); padding:72px 0;">
+  <div class="container">
+    <div class="section-header centered">
+      <span class="section-eyebrow" style="color:var(--orange)">Strategic Takeaway</span>
+      <h2 style="color:white;">What This Analysis Tells Me</h2>
+      <div class="accent-line" style="margin:16px auto 24px;"></div>
+    </div>
+    <div class="grid-3 reveal">
+      <div class="card-body" style="background:rgba(255,255,255,0.06);border-radius:var(--radius-lg);padding:28px;">
+        <div style="font-size:1.8rem;margin-bottom:12px;">&#127881;</div>
+        <h3 style="color:white;margin-bottom:10px;">A Strong Foundation</h3>
+        <p style="color:rgba(255,255,255,0.7);">The 50th campaign built real goodwill and community connection. That's not a small thing — it's earned brand capital that now needs to be deployed strategically.</p>
+      </div>
+      <div class="card-body" style="background:rgba(255,255,255,0.06);border-radius:var(--radius-lg);padding:28px;">
+        <div style="font-size:1.8rem;margin-bottom:12px;">&#128203;</div>
+        <h3 style="color:white;margin-bottom:10px;">A Planning Gap</h3>
+        <p style="color:rgba(255,255,255,0.7);">The biggest opportunity isn't creative — it's structural. Longer-horizon campaign planning, content series architecture, and measurement frameworks would have doubled the campaign's impact.</p>
+      </div>
+      <div class="card-body" style="background:rgba(255,255,255,0.06);border-radius:var(--radius-lg);padding:28px;">
+        <div style="font-size:1.8rem;margin-bottom:12px;">&#128640;</div>
+        <h3 style="color:white;margin-bottom:10px;">A Clear Next Step</h3>
+        <p style="color:rgba(255,255,255,0.7);">The next campaign doesn't start from scratch — it inherits real momentum. The question is: who leads the program management that turns that momentum into results?</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEXT -->
+<section class="section-sm">
+  <div class="container text-center">
+    <p class="mb-16" style="color:var(--gray-mid);font-size:0.9rem;">NEXT SECTION</p>
+    <h3 class="mb-8">My Campaign Proposal</h3>
+    <p class="mb-24">"50 Years Strong, 50 Years Forward" — a full integrated campaign concept responding directly to these gaps.</p>
+    <a href="campaign.html" class="btn btn-teal">See the Proposal &rarr;</a>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-tagline">SamTrans: 50 Years Strong, 50 Years Forward</div>
+    <nav class="footer-nav">
+      <a href="index.html">Home</a>
+      <a href="analysis.html">Campaign Analysis</a>
+      <a href="campaign.html">My Proposal</a>
+      <a href="coordination.html">PM Approach</a>
+      <a href="about.html">About Me</a>
+    </nav>
+    <p class="footer-sub">Portfolio prepared for the Integrated Marketing Program Manager position at SamTrans.</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

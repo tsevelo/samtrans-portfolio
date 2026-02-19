@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SamTrans Portfolio — Integrated Marketing Program Manager</title>
+  <meta name="description" content="A campaign portfolio demonstrating strategic marketing vision for SamTrans." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* Homepage-specific */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #003F6E 0%, #005B9A 45%, #007A70 100%);
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding: 80px 0 60px;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -100px; right: -100px;
+      width: 500px; height: 500px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.04);
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -80px; left: 10%;
+      width: 350px; height: 350px;
+      border-radius: 50%;
+      background: rgba(247,148,29,0.1);
+    }
+    .hero-50-badge {
+      position: absolute;
+      top: 24px; right: 24px;
+      width: 110px; height: 110px;
+      border-radius: 50%;
+      background: var(--orange);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      color: white; font-family: 'Montserrat', sans-serif;
+      box-shadow: 0 8px 24px rgba(247,148,29,0.4);
+    }
+    .hero-50-badge .badge-num { font-size: 2.4rem; font-weight: 800; line-height: 1; }
+    .hero-50-badge .badge-text { font-size: 0.55rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; text-align: center; }
+    .hero-content { position: relative; z-index: 1; max-width: 720px; }
+    .hero-label {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 24px;
+      padding: 6px 16px;
+      font-size: 0.8rem; font-weight: 600;
+      color: rgba(255,255,255,0.9);
+      margin-bottom: 28px;
+      letter-spacing: 0.04em;
+    }
+    .hero-label .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--orange); }
+    .hero h1 { color: white; margin-bottom: 24px; }
+    .hero h1 span { color: var(--orange); }
+    .hero .hero-sub {
+      font-size: 1.15rem;
+      color: rgba(255,255,255,0.82);
+      line-height: 1.7;
+      margin-bottom: 36px;
+      max-width: 600px;
+    }
+    .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+    .hero-scroll {
+      position: absolute;
+      bottom: 32px; left: 50%;
+      transform: translateX(-50%);
+      color: rgba(255,255,255,0.5);
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      display: flex; flex-direction: column; align-items: center; gap: 6px;
+    }
+    .hero-scroll .scroll-arrow {
+      width: 20px; height: 20px;
+      border-right: 2px solid rgba(255,255,255,0.4);
+      border-bottom: 2px solid rgba(255,255,255,0.4);
+      transform: rotate(45deg);
+      animation: bounce 1.4s infinite;
+    }
+    @keyframes bounce { 0%,100%{transform:rotate(45deg) translateY(0)} 50%{transform:rotate(45deg) translateY(5px)} }
+
+    /* Positioning strip */
+    .positioning {
+      background: var(--orange);
+      padding: 20px 0;
+    }
+    .positioning-inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .positioning-item {
+      display: flex; align-items: center; gap: 10px;
+      color: white; font-weight: 600; font-size: 0.9rem;
+    }
+    .positioning-item .pitem-icon {
+      width: 36px; height: 36px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+    }
+    .positioning-divider { width: 1px; height: 28px; background: rgba(255,255,255,0.3); }
+
+    /* Nav cards */
+    .nav-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; }
+    .nav-card {
+      display: block;
+      padding: 28px;
+      border-radius: var(--radius-lg);
+      border: 2px solid var(--gray-light);
+      background: white;
+      text-decoration: none;
+      transition: all var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .nav-card:hover { border-color: var(--teal); transform: translateY(-4px); box-shadow: var(--shadow-lg); text-decoration: none; }
+    .nav-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+    }
+    .nav-card.c-blue::before { background: var(--blue); }
+    .nav-card.c-teal::before { background: var(--teal); }
+    .nav-card.c-orange::before { background: var(--orange); }
+    .nav-card.c-dark::before { background: var(--dark); }
+    .nav-card-num { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray-mid); margin-bottom: 10px; }
+    .nav-card h3 { font-size: 1.1rem; color: var(--dark); margin-bottom: 8px; }
+    .nav-card p  { font-size: 0.875rem; color: var(--gray-mid); }
+    .nav-card-arrow { margin-top: 16px; font-size: 1.2rem; color: var(--teal); font-weight: 700; }
+
+    /* Value props */
+    .value-prop { display: flex; gap: 20px; align-items: flex-start; }
+    .value-prop-icon {
+      flex-shrink: 0;
+      width: 52px; height: 52px;
+      border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem;
+    }
+    .value-prop-text h3 { margin-bottom: 6px; font-size: 1rem; }
+    .value-prop-text p  { font-size: 0.9rem; }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar" role="navigation" aria-label="Main navigation">
+  <div class="container navbar-inner">
+    <a href="index.html" class="navbar-brand">
+      <div class="brand-bar"></div>
+      <div class="brand-text">SamTrans <span>Portfolio</span></div>
+    </a>
+    <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="navbar-nav" role="list">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="analysis.html">Campaign Analysis</a></li>
+      <li><a href="campaign.html">My Proposal</a></li>
+      <li><a href="coordination.html">PM Approach</a></li>
+      <li><a href="about.html">About Me</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" aria-label="Hero section">
+  <div class="hero-50-badge" aria-hidden="true">
+    <span class="badge-num">50</span>
+    <span class="badge-text">Years of<br>SamTrans</span>
+  </div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-label">
+        <span class="dot"></span>
+        Application Portfolio — Integrated Marketing Program Manager
+      </div>
+      <h1>Where Strategy Meets<br><span>50 Years Forward</span></h1>
+      <p class="hero-sub">
+        SamTrans just marked a milestone. This portfolio shows how I'd lead the integrated
+        marketing programs that carry that momentum forward — connecting campaigns across channels,
+        aligning vendors and internal teams, and building the community story for the next 50 years.
+      </p>
+      <div class="hero-ctas">
+        <a href="analysis.html" class="btn btn-orange">View Campaign Analysis &rarr;</a>
+        <a href="campaign.html" class="btn btn-outline-white">See My Proposal</a>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll" aria-hidden="true">
+    <span>EXPLORE</span>
+    <div class="scroll-arrow"></div>
+  </div>
+</section>
+
+<!-- POSITIONING STRIP -->
+<div class="positioning">
+  <div class="container">
+    <div class="positioning-inner">
+      <div class="positioning-item">
+        <div class="pitem-icon">&#128203;</div>
+        <span>Integrated Campaign Management</span>
+      </div>
+      <div class="positioning-divider" aria-hidden="true"></div>
+      <div class="positioning-item">
+        <div class="pitem-icon">&#128101;</div>
+        <span>Vendor &amp; Agency Coordination</span>
+      </div>
+      <div class="positioning-divider" aria-hidden="true"></div>
+      <div class="positioning-item">
+        <div class="pitem-icon">&#128202;</div>
+        <span>Data-Driven Strategy</span>
+      </div>
+      <div class="positioning-divider" aria-hidden="true"></div>
+      <div class="positioning-item">
+        <div class="pitem-icon">&#127758;</div>
+        <span>Community-Centered Storytelling</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PORTFOLIO NAVIGATION -->
+<section class="section">
+  <div class="container">
+    <div class="section-header centered">
+      <span class="section-eyebrow">Inside This Portfolio</span>
+      <h2>Four Sections, One Argument</h2>
+      <div class="accent-line"></div>
+      <p>Each section of this portfolio makes a case: I understand SamTrans's work, I have a vision for what comes next, and I know how to execute it.</p>
+    </div>
+    <div class="nav-cards">
+      <a href="analysis.html" class="nav-card c-blue reveal">
+        <div class="nav-card-num">Section 01</div>
+        <h3>50th Anniversary Campaign Analysis</h3>
+        <p>A critical look at what SamTrans did well — and where opportunities were left on the table.</p>
+        <div class="nav-card-arrow">&#8594;</div>
+      </a>
+      <a href="campaign.html" class="nav-card c-teal reveal">
+        <div class="nav-card-num">Section 02</div>
+        <h3>"50 Years Strong, 50 Years Forward" Proposal</h3>
+        <p>A full integrated campaign concept: audiences, messages, channels, timeline, and KPIs.</p>
+        <div class="nav-card-arrow">&#8594;</div>
+      </a>
+      <a href="coordination.html" class="nav-card c-orange reveal">
+        <div class="nav-card-num">Section 03</div>
+        <h3>The Coordination Reality</h3>
+        <p>Behind-the-scenes project management — how I'd keep agencies, vendors, and teams in sync.</p>
+        <div class="nav-card-arrow">&#8594;</div>
+      </a>
+      <a href="about.html" class="nav-card c-dark reveal">
+        <div class="nav-card-num">Section 04</div>
+        <h3>About Me &amp; Why I'm the Right Fit</h3>
+        <p>My background, relevant experience, and why I'm drawn specifically to this role and mission.</p>
+        <div class="nav-card-arrow">&#8594;</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- WHY SAMTRANS NEEDS THIS NOW -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow">The Moment</span>
+      <h2>Why This Role Matters — Right Now</h2>
+      <div class="accent-line"></div>
+      <p>Milestone campaigns create momentum. The challenge is sustaining it. SamTrans needs integrated marketing leadership that can turn anniversary energy into lasting ridership growth, community trust, and brand clarity.</p>
+    </div>
+    <div class="stat-grid reveal">
+      <div class="stat-box blue-accent">
+        <div class="stat-num">50+</div>
+        <div class="stat-label">Years Connecting San Mateo County</div>
+      </div>
+      <div class="stat-box teal-accent">
+        <div class="stat-num">100+</div>
+        <div class="stat-label">Route Miles Across the Peninsula</div>
+      </div>
+      <div class="stat-box orange-accent">
+        <div class="stat-num">8M+</div>
+        <div class="stat-label">Annual Passenger Trips</div>
+      </div>
+      <div class="stat-box blue-accent">
+        <div class="stat-num">$1B+</div>
+        <div class="stat-label">Capital Investment Horizon</div>
+      </div>
+    </div>
+    <div class="grid-2 mt-32">
+      <div class="reveal">
+        <h3 class="mb-16">The Post-Anniversary Challenge</h3>
+        <p class="mb-16">Anniversary campaigns are powerful—but they have a shelf life. The 50th celebration created visibility, goodwill, and a narrative moment. Now SamTrans needs to convert that awareness into sustained behavior change: more riders, more advocates, and stronger community investment in transit's future.</p>
+        <p>That requires integrated marketing—not just advertising, but the orchestration of every touchpoint, every partner, and every message working in concert.</p>
+      </div>
+      <div class="reveal">
+        <h3 class="mb-16">The Program Manager's Role</h3>
+        <div class="checklist">
+          <ul>
+            <li>Aligning creative, media, and digital teams around one strategic narrative</li>
+            <li>Managing agency relationships, scopes, and deliverables across the campaign calendar</li>
+            <li>Translating executive vision into executable project plans with clear owners</li>
+            <li>Measuring what matters and adapting quickly when channels underperform</li>
+            <li>Being the connective tissue between marketing, operations, and community affairs</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUE PROPS -->
+<section class="section">
+  <div class="container">
+    <div class="section-header centered">
+      <span class="section-eyebrow">What I Bring</span>
+      <h2>Three Core Strengths</h2>
+      <div class="accent-line"></div>
+    </div>
+    <div class="grid-3">
+      <div class="value-prop reveal">
+        <div class="value-prop-icon" style="background:var(--blue-light)">&#127919;</div>
+        <div class="value-prop-text">
+          <h3>Strategic Clarity</h3>
+          <p>I translate vague briefs into structured campaign frameworks — audiences defined, messages prioritized, channels justified, success metrics locked in before execution begins.</p>
+        </div>
+      </div>
+      <div class="value-prop reveal">
+        <div class="value-prop-icon" style="background:var(--teal-light)">&#9881;</div>
+        <div class="value-prop-text">
+          <h3>Operational Rigor</h3>
+          <p>Projects don't drift when I'm managing them. I build systems — intake processes, review cycles, approval workflows, status rhythms — that keep complex campaigns on track.</p>
+        </div>
+      </div>
+      <div class="value-prop reveal">
+        <div class="value-prop-icon" style="background:var(--orange-light)">&#128172;</div>
+        <div class="value-prop-text">
+          <h3>Relationship Intelligence</h3>
+          <p>I manage up, across, and out — keeping executives informed, colleagues aligned, and agency partners performing. I know how to run a vendor review and how to have a hard conversation.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA STRIP -->
+<section style="background:linear-gradient(135deg,var(--teal-dark),var(--blue)); padding:60px 0;">
+  <div class="container text-center">
+    <p class="section-eyebrow" style="color:var(--orange)">Ready to Explore?</p>
+    <h2 style="color:white;margin-bottom:12px;">Start with the Campaign Analysis</h2>
+    <p style="color:rgba(255,255,255,0.8);max-width:520px;margin:0 auto 28px;">See how I've studied SamTrans's 50th anniversary work — what worked, what could have gone further, and what it sets up for next.</p>
+    <a href="analysis.html" class="btn btn-orange">Read the Analysis &rarr;</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-tagline">SamTrans: 50 Years Strong, 50 Years Forward</div>
+    <nav class="footer-nav" aria-label="Footer navigation">
+      <a href="index.html">Home</a>
+      <a href="analysis.html">Campaign Analysis</a>
+      <a href="campaign.html">My Proposal</a>
+      <a href="coordination.html">PM Approach</a>
+      <a href="about.html">About Me</a>
+    </nav>
+    <p class="footer-sub">Portfolio prepared for the Integrated Marketing Program Manager position at SamTrans.</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
